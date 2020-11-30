@@ -11,8 +11,6 @@
 /migrations/
 /bin/
 assets/
-composer.json
-composer.lock
 public/
 
 ###< symfony/framework-bundle ###
