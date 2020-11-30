@@ -1,0 +1,83 @@
+{{ form_start(form) }}
+<div class="card-body">
+        <div class="row">
+            <div class="col-md-6"> 
+                <div class="form-group">
+                    <label for="inputName">{{ form_label(form.firstName) }}</label>
+                    {{ form_widget(form.firstName, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                    <label for="inputName">{{ form_label(form.lastName) }}</label>
+                    {{ form_widget(form.lastName, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                    <label for="">{{ form_label(form.birthdate) }}</label>
+                    
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                        </span>
+                        </div>
+                       {{ form_widget(form.birthdate, {'attr': {'class': 'form-control custom-select'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputStatus">{{ form_label(form.roomNumber) }}</label>
+                    {{ form_widget(form.roomNumber, {'attr': {'class': 'form-control custom-select'}}) }}
+                </div>
+                 <div class="form-group">
+                    <label for="">{{ form_label(form.startDate) }}</label>
+                    
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="far fa-calendar-alt"></i>
+                      </span>
+                    </div>
+                   {{ form_widget(form.startDate, {'attr': {'class': 'form-control custom-select'}}) }}
+                  </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">{{ form_label(form.imageFile) }}</label>
+                    {{ form_widget(form.imageFile, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+
+
+                <div class="form-group">
+                    <label for="">{{ form_label(form.endingDate) }}</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                        </span>
+                        </div>
+                       {{ form_widget(form.endingDate, {'attr': {'class': 'form-control custom-select'}}) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputStatus">{{ form_label(form.liveStreaming) }}</label>
+                    {{ form_widget(form.liveStreaming, {'attr': {'class': 'form-control custom-select'}}) }}
+                </div>
+
+                <div class="form-group">
+                   {{ form_row(form.isActive, {label_attr: {class: 'switch-custom'} }) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="inputStatus">{{ form_label(form.family) }}</label>
+                    {{ form_widget(form.family, {'attr': {'class': 'form-control custom-select'}}) }}
+                </div>
+             </div>
+                 <div class="card-footer col-md-12">
+                   <button class="btn btn-success col-md-2">{{ button_label|default('Save') }}</button>
+                   <a href="{{ path('resident_index') }}" class="col-md-2 btn btn-default float-right">Cancel</a>
+                </div> 
+             
+        </div>
+        </div>
+  {{ form_end(form) }}

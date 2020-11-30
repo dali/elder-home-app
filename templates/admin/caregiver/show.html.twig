@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Caregiver{% endblock %}
+
+{% block body %}
+    <h1>Caregiver</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ caregiver.id }}</td>
+            </tr>
+            <tr>
+                <th>NatIdCard</th>
+                <td>{{ caregiver.natIdCard }}</td>
+            </tr>
+            <tr>
+                <th>StartDate</th>
+                <td>{{ caregiver.startDate ? caregiver.startDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LeftDate</th>
+                <td>{{ caregiver.leftDate ? caregiver.leftDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CertificatedAt</th>
+                <td>{{ caregiver.certificatedAt ? caregiver.certificatedAt|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('caregiver_index') }}">back to list</a>
+
+    <a href="{{ path('caregiver_edit', {'id': caregiver.id}) }}">edit</a>
+
+    {{ include('admin/caregiver/_delete_form.html.twig') }}
+{% endblock %}

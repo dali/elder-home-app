@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resident{% endblock %}
+
+{% block body %}
+    <h1>Resident</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ resident.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ resident.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ resident.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{{ resident.birthdate ? resident.birthdate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>StartDate</th>
+                <td>{{ resident.startDate ? resident.startDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EndingDate</th>
+                <td>{{ resident.endingDate ? resident.endingDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <td>{{ resident.avatar }}</td>
+            </tr>
+            <tr>
+                <th>RoomNumber</th>
+                <td>{{ resident.roomNumber }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ resident.isActive }}</td>
+            </tr>
+            <tr>
+                <th>LiveStreaming</th>
+                <td>{{ resident.liveStreaming }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('resident_index') }}">back to list</a>
+
+    <a href="{{ path('resident_edit', {'id': resident.id}) }}">edit</a>
+
+    {{ include('admin/resident/_delete_form.html.twig') }}
+{% endblock %}

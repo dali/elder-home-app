@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resident index{% endblock %}
+
+{% block body %}
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Les résidents</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">ADMIN</a></li>
+              <li class="breadcrumb-item active">Dashboard v2</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                       <div class="card">
+                                        <div class="card-header">
+                                          <h3 class="card-title">Les Résidents</h3>
+                                             <div class="card-tools">
+                                              <a class="btn btn-info" href="{{ path('resident_new') }}">   <i class="fas fa-user-plus"></i> Ajouter</a>
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>FirstName</th>
+                                                    <th>LastName</th>
+                                                    <th>Birthdate</th>
+                                                    <th>StartDate</th>
+                                                    <th>EndingDate</th>
+                                                    <th>Avatar</th>
+                                                    <th>RoomNumber</th>
+                                                    <th>Status</th>
+                                                    <th>LiveStreaming</th>
+                                                    <th>Family</th>
+                                                    <th>actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for resident in residents %}
+                                                <tr>
+                                                    <td>{{ resident.id }}</td>
+                                                    <td>{{ resident.firstName }}</td>
+                                                    <td>{{ resident.lastName }}</td>
+                                                    <td>{{ resident.birthdate ? resident.birthdate|date('Y-m-d') : '' }}</td>
+                                                    <td>{{ resident.startDate ? resident.startDate|date('Y-m-d') : '' }}</td>
+                                                    <td>{{ resident.endingDate ? resident.endingDate|date('Y-m-d') : '' }}</td>
+                                                    <td>
+                                                      <div class="widget-user-image">
+                                                            <img src="{{ vich_uploader_asset(resident) }}"  width="50px" class="img-circle elevation-2" alt="User Image">
+                                                      </div>
+                                                    </td>
+                                                    <td>{{ resident.roomNumber }}</td>
+                                                    <td>{{ resident.isActive == true ? "<span class='right badge badge-success'>Activé</span>" : "<span class='right badge badge-danger'>Désactivé</span>" }}</td>
+        
+                                                    <td>{{ resident.liveStreaming }}</td>
+                                                    <td>{{ resident.family.user.firstName }} {{ resident.family.user.lastName }}</td>
+                                                    <td>
+                                                        <div class="btn-group btn-group-sm">
+                                                               <a class="btn btn-info" href="{{ path('resident_show', {'id': resident.id}) }}">
+                                                               <i class="fas fa-user-check"></i></a>
+                                                               <a class="btn btn-warning" href="{{ path('resident_edit', {'id': resident.id}) }}">
+                                                               <i class="fas fa-user-edit"></i></a>
+                                                               <a class="btn btn-danger" href="{{ path('resident_delete', {'id': resident.id}) }}">
+                                                              <i class="fas fa-user-slash"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="11">no records found</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        </div>
+         
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div
+    <a href="{{ path('resident_new') }}">Create new</a>
+{% endblock %}

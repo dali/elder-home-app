@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Caregiver index{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Aides Soignantes</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">ADMIN</a></li>
+              <li class="breadcrumb-item active">Dashboard v2</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                       <div class="card">
+                                        <div class="card-header">
+                                          <h3 class="card-title">Aides Soignantes</h3>
+                                             <div class="card-tools">
+                                              <a class="btn btn-info" href="{{ path('caregiver_new') }}">   <i class="fas fa-user-plus"></i> Ajouter</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                          <table id="example1" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Avatar</th>
+                                                        <th>NatIdCard</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Email</th>
+                                                        <th>Birthdate</th>
+                                                        <th>Status</th>
+                                                        <th>Phone Number</th>
+                                                        <th>CertificatedAt</th>
+                                                        <th>actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for caregiver in caregivers %}
+                                                    <tr>
+                                                        <td>{{ caregiver.id }}</td>
+                                                        
+                                                        <td>
+                                                          <div class="widget-user-image">
+                                                              <img src="{{ vich_uploader_asset(caregiver.user) }}"  width="50px" class="img-circle elevation-2" alt="User Image">
+                                                        </div>
+                                                      </td>
+                                                        <td>{{ caregiver.natIdCard }}</td>
+                                                        <td>{{ caregiver.user.firstName }}</td>
+                                                        <td>{{ caregiver.user.lastName  }}</td>
+                                                        <td>{{ caregiver.user.email }}</td>
+                                                        <td>{{ caregiver.user.birthdate ? caregiver.user.birthdate|date('d-m-Y') : '' }}</td>
+                                                        <td>{{ caregiver.user.isActive == true ? "<span class='right badge badge-success'>Activé</span>" : "<span class='right badge badge-danger'>Désactivé</span>" }}</td>
+                                                        <td>{{ caregiver.user.phoneNumber }}</td>
+                                                        <td>{{ caregiver.certificatedAt ? caregiver.certificatedAt|date('Y-m-d') : '' }}</td>
+                                                        <td>
+                                                            <a href="{{ path('caregiver_show', {'id': caregiver.id}) }}">show</a>
+                                                            <a href="{{ path('caregiver_edit', {'id': caregiver.id}) }}">edit</a>
+                                                        </td>
+                                                    </tr>
+                                                {% else %}
+                                                    <tr>
+                                                        <td colspan="6">no records found</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+         
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+    <a href="{{ path('caregiver_new') }}">Create new</a>
+{% endblock %}

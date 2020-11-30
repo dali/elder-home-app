@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Family index{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Les Familles</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">ADMIN</a></li>
+              <li class="breadcrumb-item active">Dashboard v2</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                       <div class="card">
+                                        <div class="card-header">
+                                          <h3 class="card-title">Family</h3>
+                                             <div class="card-tools">
+                                              <a class="btn btn-info" href="{{ path('family_new') }}">   <i class="fas fa-user-plus"></i> Ajouter</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                       <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                
+                                                <th>Avatar</th>
+                                                <th>FirstName</th>
+                                                <th>LastName</th>
+                                                <th>Email</th>
+                                                <th>Birthdate</th>
+                                                <th>Status</th>
+                                                <th>PhoneNumber</th>
+                                                <th>Resident</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                  {% for family in families %}
+                                                  
+                                                      <tr>
+                                                          <td>
+                                                            <div class="widget-user-image">
+                                                              <img src="{{ vich_uploader_asset(family.user) }}"  width="50px" class="img-circle elevation-2" alt="User Image">
+                                                            </div>
+                                                          </td>
+                                                          <td>{{ family.user.firstName }}</td>
+                                                          <td>{{ family.user.lastName }}</td>
+                                                          <td>{{ family.user.email }}</td>
+                                                          <td>{{ family.user.birthdate ? family.user.birthdate|date('d-m-Y') : '' }}</td>
+                                                          <td>{{ family.user.isActive  == true ? "<span class='right badge badge-success'>Activé</span>" : "<span class='right badge badge-danger'>Désactivé</span>" }}</td>
+                                                        
+                                                          <td>{{ family.user.phoneNumber }}</td>
+                                                          
+                                                          <td>
+                                                            {% for resident in family.residents  %}
+                                                                {{ resident.firstName }} {{ resident.lastName }}
+                                                            {% endfor %}
+                                                          </td>
+                                                           
+                                                      </tr>
+                                                  {% else %}
+                                                      <tr>
+                                                          <td colspan="12">no records found</td>
+                                                      </tr>
+                                                  {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                    
+                                            </tr>
+                                            </tfoot>
+                                          </table>
+                                            </div>
+         
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+    <a href="{{ path('family_new') }}">Create new</a>
+{% endblock %}

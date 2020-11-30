@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Caregiver{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Ajouter une aide soignante</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Aide soignante</a></li>
+                    <li class="breadcrumb-item active">Ajouter</li>
+                    </ol>
+                </div>
+                </div>
+            </div>
+        </section>
+  
+        <section class="content">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Ajouter aide soignante</h3>
+                        </div>
+                        {{ include('admin/caregiver/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </section>
+</div>
+{% endblock %}

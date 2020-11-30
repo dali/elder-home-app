@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Category{% endblock %}
+
+{% block body %}
+    <h1>Edit Category</h1>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Modifier category</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">categories/</a></li>
+                    <li class="breadcrumb-item active">Modifier</li>
+                    </ol>
+                </div>
+                </div>
+            </div>
+        </section>
+  
+        <section class="content">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                <div class="card card-primary">
+                    <div class="card-header">
+                    <h3 class="card-title">Modifier category</h3>
+                    </div>
+    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('category_index') }}">back to list</a>
+
+    {{ include('category/_delete_form.html.twig') }}
+
+                        </div>
+              
+            </div>
+
+        </section>
+</div>
+{% endblock %}

@@ -13,7 +13,6 @@
 assets/
 composer.json
 composer.lock
-templates/
 public/
 
 ###< symfony/framework-bundle ###
