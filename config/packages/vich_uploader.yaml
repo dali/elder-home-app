@@ -1,0 +1,14 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       avatars:
+           uri_prefix: /images/avatars
+           upload_destination: '%kernel.project_dir%/public/images/avatars'
+           inject_on_load: false
+           delete_on_update: true
+           delete_on_remove: true
+
+       residents_avatars:
+           uri_prefix: /images/residents/avatars
+           upload_destination: '%kernel.project_dir%/public/images/residents/avatars'
